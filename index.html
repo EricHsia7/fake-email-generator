@@ -2,7 +2,73 @@
 <head>
   <meta charset="UTF-8">
   <title>Fake Mail Generator</title>
-  <link rel="stylesheet" href="./style.css">
+  <style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap');
+body {
+  padding:0px;
+  margin:0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height:100vh;
+  flex-direction:column;
+}
+.btns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction:row;
+  padding:10px;
+}
+.btn {
+  background:#f5f5f5;
+  padding:8px;
+  font-size:18px;
+  border-radius:12px;
+  font-family: 'Noto Sans TC', sans-serif;
+  -webkit-appearance:none;
+  outline:none;
+  -webkit-tap-highlight-color:rgba(0,0,0,0);
+  transition:0.3s;
+}
+.btn:hover ,input#fakemail:hover{
+  background:#e3e3e3;
+}
+.m10 {
+  margin-left:10px;
+}
+input#fakemail {
+  border:none;
+  background:#f5f5f5;
+  font-size:18px;
+  width:calc(var(--text-length) * 1px);
+  max-width:90%;
+  font-family: 'Noto Sans TC', sans-serif;
+  padding:8px;
+  margin:0px;
+  font-stretch: expanded;
+  border-radius:12px;
+  transition:0.1s;
+  -webkit-appearance:none;
+  outline:none;
+  -webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+.calctextwidth {
+  font-size:18px;
+  font-family: 'Noto Sans TC', sans-serif;
+  padding:0px;
+  font-stretch: expanded;
+  background:#f5f5f5;
+  white-space:nowrap;
+}
+h2 {
+  padding:5px;
+  margin:0px;
+  font-family: 'Noto Sans TC', sans-serif;
+  font-weight:700;
+  white-space:nowrap;
+}
+  </style>
 </head>
 <body>
 <h2>Fake Mail Generator</h2>
