@@ -78,8 +78,9 @@ h2 {
 <h2>Fake Mail Generator</h2>
 <input type="text" id="fakemail" readonly="readonly" style="--text-length:16">
 <div class="btns">
-<div class="btn" id="copyfakemail">copy</div>
-<div class="btn m10" id="newfakemail">new</div>
+<div class="btn" id="copyfakemail">Copy</div>
+<div class="btn m10" id="newfakemail">New</div>
+<div class="btn m10" id="info">Info</div>
 </div>
   <script>
   function calctextwidth(text) {
@@ -124,6 +125,9 @@ function copyfakemail() {
 }
 document.querySelector('#newfakemail').addEventListener('click',newfakemail);
 document.querySelector('#copyfakemail').addEventListener('click',copyfakemail);
+document.querySelector('#info').addEventListener('click',function() {
+  window.open('https://github.com/EricHsia7/fakemail-generator/blob/main/README.md');
+});
 
 newfakemail();
 document.querySelector('body').height = window.innerHeight ;
