@@ -7,14 +7,33 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap');
 
+    :root {
+      --background-color: #fff;
+      --btn-color: #f5f5f5;
+      --btn-text-color: #4e4e4e;
+      --btn-hover-color: #e3e3ee;
+      --text-color: #4e4e4e;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --background-color: #0d0d0d;
+        --btn-color: #1a1a1a;
+        --btn-text-color: #fff;
+        --btn-hover-color: #212121;
+        --text-color: #fff;
+      }
+
+    }
+
     body {
       padding: 0px;
       margin: 0px;
       display: flex;
       justify-content: center;
       align-items: center;
-      /*min-height:100vh;*/
       flex-direction: column;
+      background: var(--background-color);
     }
 
     .btns {
@@ -28,7 +47,7 @@
     }
 
     .btn {
-      background: #f5f5f5;
+      background: var(--btn-color);
       padding: 8px;
       font-size: 18px;
       border-radius: 12px;
@@ -39,11 +58,12 @@
       transition: 0.3s;
       -webkit-user-select: none;
       user-select: none;
+      color: var(--btn-text-color)
     }
 
     .btn:hover,
     #fakeemail:hover {
-      background: #e3e3e3;
+      background: var(--btn-hover-color);
     }
 
     .m10 {
@@ -52,7 +72,7 @@
 
     #fakeemail {
       border: none;
-      background: #f5f5f5;
+      background: var(--btn-color);
       font-size: 18px;
       width: auto;
       max-width: 90%;
@@ -81,6 +101,7 @@
       white-space: nowrap;
       -webkit-user-select: none;
       user-select: none;
+      color: var(--text-color)
     }
   </style>
 </head>
@@ -88,52 +109,53 @@
 <body>
   <h2>Fake Email Generator</h2>
   <div id="fakeemail"></div>
-    <div class="btns">
-      <div class="btn" id="copyfakeemail">Copy</div>
-      <div class="btn m10" id="newfakeemail">New</div>
-      <div class="btn m10" id="info">Info</div>
-    </div>
-    <script>
-      function fakeemail() {
-        var fakeemailchars = "0123456789abcdefghijklmnopqrstuvwxyz";
-        var fakeemailname = "";
-        for (var i = 0; i < 16; i++) {
-          var fakeemailrandomNumber = Math.floor(Math.random() * fakeemailchars.length);
-          fakeemailname += fakeemailchars.substring(fakeemailrandomNumber, fakeemailrandomNumber + 1);
-        }
+  <div class="btns">
+    <div class="btn" id="copyfakeemail">Copy</div>
+    <div class="btn m10" id="newfakeemail">New</div>
+    <div class="btn m10" id="info">Info</div>
+  </div>
+  <script>
+    function fakeemail() {
+      var fakeemailchars = "0123456789abcdefghijklmnopqrstuvwxyz";
+      var fakeemailname = "";
+      for (var i = 0; i < 16; i++) {
+        var fakeemailrandomNumber = Math.floor(Math.random() * fakeemailchars.length);
+        fakeemailname += fakeemailchars.substring(fakeemailrandomNumber, fakeemailrandomNumber + 1);
+      }
 
-        var fakeemailchars2 = "abcdefghijklmnopqrstuvwxyz";
-        var fakeemaildomain = "";
-        for (var i = 0; i < 5; i++) {
-          var fakeemailrandomNumber2 = Math.floor(Math.random() * fakeemailchars2.length);
-          fakeemaildomain += fakeemailchars2.substring(fakeemailrandomNumber2, fakeemailrandomNumber2 + 1);
-        }
-        var fakeemailchars3 = ['com', 'net', 'org', 'fr', 'mx', 'co', 'info', 'uk', 'in', 'io', 'me', 'app', 'ca', 'online', 'co', 'nz', 'biz', 'dev', 'site', 'tech', 'pro', 'club', 'cc', 'live', 'global', 'space', 'xyz', 'design', 'one', 'bio', 'cloud', 'mobi', 'pw'];
-        var fakeemaildomain2 = fakeemailchars3[Math.floor(Math.random() * fakeemailchars3.length)]
-        return fakeemailname + '@' + fakeemaildomain + '.' + fakeemaildomain2;
+      var fakeemailchars2 = "abcdefghijklmnopqrstuvwxyz";
+      var fakeemaildomain = "";
+      for (var i = 0; i < 5; i++) {
+        var fakeemailrandomNumber2 = Math.floor(Math.random() * fakeemailchars2.length);
+        fakeemaildomain += fakeemailchars2.substring(fakeemailrandomNumber2, fakeemailrandomNumber2 + 1);
       }
-      function newfakeemail() {
-        var fakeemail_a = fakeemail()
-        document.querySelector('#fakeemail').innerText = fakeemail_a;
-        document.querySelector('#fakeemail').setAttribute('fake-email', fakeemail_a);
-      }
-      function copyfakeemail() {
-        var textArea = document.createElement("textarea");
-        textArea.value = document.querySelector('#fakeemail').getAttribute('fake-email');
-        document.body.appendChild(textArea);
-        textArea.select();
-        document.execCommand("Copy");
-        textArea.remove();
-      }
-      document.querySelector('#newfakeemail').addEventListener('click', newfakeemail);
-      document.querySelector('#copyfakeemail').addEventListener('click', copyfakeemail);
-      document.querySelector('#info').addEventListener('click', function () {
-        window.open('https://github.com/EricHsia7/fake-email-generator/blob/main/README.md');
-      });
+      var fakeemailchars3 = ['com', 'net', 'org', 'fr', 'mx', 'co', 'info', 'uk', 'in', 'io', 'me', 'app', 'ca', 'online', 'co', 'nz', 'biz', 'dev', 'site', 'tech', 'pro', 'club', 'cc', 'live', 'global', 'space', 'xyz', 'design', 'one', 'bio', 'cloud', 'mobi', 'pw'];
+      var fakeemaildomain2 = fakeemailchars3[Math.floor(Math.random() * fakeemailchars3.length)]
+      return fakeemailname + '@' + fakeemaildomain + '.' + fakeemaildomain2;
+    }
+    function newfakeemail() {
+      var fakeemail_a = fakeemail()
+      document.querySelector('#fakeemail').innerText = fakeemail_a;
+      document.querySelector('#fakeemail').setAttribute('fake-email', fakeemail_a);
+    }
+    function copyfakeemail() {
+      var textArea = document.createElement("textarea");
+      textArea.value = document.querySelector('#fakeemail').getAttribute('fake-email');
+      textArea.setAttribute('readonly', 'readonly')
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand("Copy");
+      textArea.remove();
+    }
+    document.querySelector('#newfakeemail').addEventListener('click', newfakeemail);
+    document.querySelector('#copyfakeemail').addEventListener('click', copyfakeemail);
+    document.querySelector('#info').addEventListener('click', function () {
+      window.open('https://github.com/EricHsia7/fake-email-generator/blob/main/README.md');
+    });
 
-      newfakeemail();
-      document.querySelector('body').height = window.innerHeight;
-    </script>
+    newfakeemail();
+    document.querySelector('body').height = window.innerHeight;
+  </script>
 </body>
 
 </html>
